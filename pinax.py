@@ -1,4 +1,6 @@
 import json
+import os
+import shutil
 
 from pip.commands import install
 
@@ -8,10 +10,41 @@ import requests
 
 class Config(object):
     def __init__(self):
-        self.url = "https://gist.githubusercontent.com/paltman/32c6e4c3a4abd61a5751/raw/65fa0cbffc3ce9822133d01086cb3ac304c1ba33/projects.json"
+        self.url = "https://gist.githubusercontent.com/paltman/32c6e4c3a4abd61a5751/raw/b1c344175a5f2ba827f7b930032c649553826746/projects.json"
 
 
 pass_config = click.make_pass_decorator(Config, ensure=True)
+
+
+
+def pip_install(package):
+    command = install.InstallCommand()
+    opts, args = command.parser.parse_args([])
+    click.echo("Installing {}...".format(package))
+    command.run(opts, [package])
+
+
+def start_project(project, name):
+    from django.core.management import call_command
+    click.echo("Starting project from Pinax")
+    kwargs = dict(
+        template=project["template"],
+        files=project["files"]
+    )
+    call_command("startproject", name, **kwargs)
+
+
+def output_instructions(project, name):
+    if "instructions" in project:
+        click.echo(project["instructions"])
+
+
+def cleanup(name):
+    # @@@ Should this be indicated in the project dict instead of hard coded?
+    os.remove(os.path.join(name, "LICENSE"))
+    os.remove(os.path.join(name, "CONTRIBUTING.md"))
+    os.remove(os.path.join(name, "README.md"))
+    shutil.move(os.path.join(name, "PROJECT_README.md"), os.path.join(name, "README.md"))
 
 
 @click.group()
@@ -32,24 +65,11 @@ def projects(config, start, name):
     """
     projects = requests.get(config.url).json()
     if start and name:
-        url = projects[start]["url"]
-        startprojectargs = projects[start]["args"]
-        command = install.InstallCommand()
-        opts, args = command.parser.parse_args([])
-        click.echo("Installing Django...")
-        command.run(opts, ["Django"])
-        from django.core.management import call_command
-        click.echo("Starting {} project from Pinax".format(start))
-        call_command("startproject", name, startprojectargs, template=url)
+        pip_install("Django")
+        start_project(projects[start], name)
         click.echo("Finished")
-        click.echo("""You now should:
-
-1. cd {}
-2. pip install -r requirements.txt
-3. chmod +x manage.py
-4. ./manage.py migrate
-5. ./manage.py runserver
-""")
+        output_instructions(projects[start], name)
+        cleanup(name)
     else:
         for project in projects:
             click.echo(project)
