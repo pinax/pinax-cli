@@ -10,7 +10,7 @@ import requests
 
 class Config(object):
     def __init__(self):
-        self.url = "https://gist.githubusercontent.com/paltman/32c6e4c3a4abd61a5751/raw/b1c344175a5f2ba827f7b930032c649553826746/projects.json"
+        self.url = "https://raw.githubusercontent.com/pinax/pinax/master/projects.json"
 
 
 pass_config = click.make_pass_decorator(Config, ensure=True)
