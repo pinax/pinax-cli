@@ -49,6 +49,7 @@ def cleanup(name):
 
 @click.group()
 @click.option("--url", type=str, required=False, help="url to project data source")
+@click.version_option()
 @pass_config
 def main(config, url):
     if url:
