@@ -11,9 +11,9 @@ def read(*parts):
 
 
 setup(
-    author="",
-    author_email="",
-    description="",
+    author="Pinax Developers",
+    author_email="developers@pinaxproject.com",
+    description="a command line for Pinax",
     name="pinax-cli",
     long_description=read("README.rst"),
     version="0.1",
