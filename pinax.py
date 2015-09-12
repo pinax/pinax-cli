@@ -44,8 +44,6 @@ def cleanup(name):
     # @@@ Should this be indicated in the project dict instead of hard coded?
     os.remove(os.path.join(name, "LICENSE"))
     os.remove(os.path.join(name, "CONTRIBUTING.md"))
-    os.remove(os.path.join(name, "README.md"))
-    shutil.move(os.path.join(name, "PROJECT_README.md"), os.path.join(name, "README.md"))
 
 
 @click.group()
