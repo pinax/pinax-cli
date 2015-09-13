@@ -56,37 +56,42 @@ def main(config, url):
 
 
 @main.command()
-@click.option("--start", type=str, required=False, help="kind of project to start")
-@click.option("--dev", is_flag=True)
-@click.argument("name", type=str, default="", required=False)
 @pass_config
-def projects(config, start, dev, name):
-    """
-    List available projects to start
-    """
+def projects(config):
     payload = requests.get(config.url).json()
     if payload.get("version") == 1:
         projects = payload.get("projects")
-        if start and name:
-            if dev or len(projects[start]["releases"]) > 0:
-                pip_install("Django")
-                start_project(projects[start], name, dev)
-                click.echo("Finished")
-                output_instructions(projects[start], name)
-                cleanup(name)
+        click.echo("{} {}".format("Release".rjust(7), "Project"))
+        click.echo("------- ---------------")
+        for project in projects:
+            if projects[project]["releases"]:
+                release = max([
+                    x.split("/")[-1].replace(".tar.gz", "")
+                    for x in projects[project]["releases"]
+                ]).split("-")[-1]
             else:
-                click.echo("There are no releases for {}. You need to specify the --dev flag to use.".format(start))
+                release = ""
+            click.echo("{} {}".format(release.rjust(7), project))
+    else:
+        click.echo("The projects manifest you are trying to consume will not work: \n{}".format(config.url))
+
+
+@main.command()
+@click.option("--dev", is_flag=True, help="use latest development branch instead of release")
+@click.argument("project", type=str, required=True)
+@click.argument("name", type=str, required=True)
+@pass_config
+def start(config, dev, project, name):
+    payload = requests.get(config.url).json()
+    if payload.get("version") == 1:
+        projects = payload.get("projects")
+        if dev or len(projects[project]["releases"]) > 0:
+            pip_install("Django")
+            start_project(projects[project], name, dev)
+            click.echo("Finished")
+            output_instructions(projects[project], name)
+            cleanup(name)
         else:
-            click.echo("{} {}".format("Release".rjust(7), "Project"))
-            click.echo("------- ---------------")
-            for project in projects:
-                if projects[project]["releases"]:
-                    release = max([
-                        x.split("/")[-1].replace(".tar.gz", "")
-                        for x in projects[project]["releases"]
-                    ]).split("-")[-1]
-                else:
-                    release = ""
-                click.echo("{} {}".format(release.rjust(7), project))
+            click.echo("There are no releases for {}. You need to specify the --dev flag to use.".format(start))
     else:
         click.echo("The projects manifest you are trying to consume will not work: \n{}".format(config.url))
