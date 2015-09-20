@@ -22,7 +22,8 @@ setup(
     py_modules=["pinax"],
     install_requires=[
         "Click==5.1",
-        "requests==2.7.0"
+        "requests==2.7.0",
+        "colorama==0.3.3"
     ],
     entry_points="""
         [console_scripts]
