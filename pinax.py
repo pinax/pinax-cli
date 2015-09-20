@@ -1,6 +1,4 @@
-import json
 import os
-import shutil
 
 from pip.commands import install
 
@@ -14,7 +12,6 @@ class Config(object):
 
 
 pass_config = click.make_pass_decorator(Config, ensure=True)
-
 
 
 def pip_install(package):
