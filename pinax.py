@@ -1,4 +1,5 @@
 import os
+import sys
 
 from pip.commands import install
 
@@ -22,14 +23,18 @@ def pip_install(package):
 
 
 def start_project(project, name, dev):
-    from django.core.management import call_command
+    from django.core.management import call_command, CommandError
     click.echo("Starting project from Pinax")
     template = project["url"] if dev else max(project["releases"])
     kwargs = dict(
         template=template,
         files=project["process-files"]
     )
-    call_command("startproject", name, **kwargs)
+    try:
+        call_command("startproject", name, **kwargs)
+    except CommandError as e:
+        click.echo("Error: {}".format(e))
+        sys.exit(1)
 
 
 def output_instructions(project, name):
