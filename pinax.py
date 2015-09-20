@@ -33,7 +33,7 @@ def start_project(project, name, dev):
     try:
         call_command("startproject", name, **kwargs)
     except CommandError as e:
-        click.echo("Error: {}".format(e))
+        click.echo(click.style("Error: ", fg="red") + str(e))
         sys.exit(1)
 
 
