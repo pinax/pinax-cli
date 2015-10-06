@@ -17,7 +17,7 @@ setup(
     name="pinax-cli",
     long_description=read("README.rst"),
     version="0.4",
-    url="http://github.com/pinax/pianx-cli/",
+    url="http://github.com/pinax/pinax-cli/",
     license="MIT",
     py_modules=["pinax"],
     install_requires=[
