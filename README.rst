@@ -15,12 +15,17 @@ Pinax Command Line
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target:  https://pypi.python.org/pypi/pinax-cli/
+   
+Pinax
+------
+
+Pinax is an open-source platform built on the Django Web Framework. It is an ecosystem of reusable Django apps, themes, and starter project templates. This collection can be found at http://pinaxproject.com.
 
 
 Documentation
 ---------------
 
-The Pinax documentation is available at http://pinaxproject.com/pinax/.
+The pinax-cli documentation is currently under construction. If you would like to help us write documentation, please join our Slack channel and let us know! The Pinax documentation is available at http://pinaxproject.com/pinax/.
 
 
 Code of Conduct
