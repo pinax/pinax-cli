@@ -16,10 +16,10 @@ setup(
     description="a command line for Pinax",
     name="pinax-cli",
     long_description=read("README.rst"),
-    version="0.4",
+    version="0.5",
     url="http://github.com/pinax/pinax-cli/",
     license="MIT",
-    py_modules=["pinax"],
+    py_modules=["pcli"],
     install_requires=[
         "Click==5.1",
         "requests==2.7.0",
@@ -27,7 +27,7 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        pinax=pinax:main
+        pinax=pcli:main
     """,
     classifiers=[
         "Development Status :: 4 - Beta",
