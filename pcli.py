@@ -1,4 +1,5 @@
 import os
+import stat
 import sys
 
 from pip.commands import install
@@ -47,6 +48,9 @@ def cleanup(name):
     os.remove(os.path.join(name, "LICENSE"))
     os.remove(os.path.join(name, "CONTRIBUTING.md"))
     os.remove(os.path.join(name, "update.sh"))
+    managepy = os.path.join(name, "manage.py")
+    st = os.stat(managepy)
+    os.chmod(managepy, st.st_mode | stat.S_IEXEC)
 
 
 @click.group()
