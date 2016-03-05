@@ -16,7 +16,7 @@ setup(
     description="a command line for Pinax",
     name="pinax-cli",
     long_description=read("README.rst"),
-    version="0.5",
+    version="0.6",
     url="http://github.com/pinax/pinax-cli/",
     license="MIT",
     py_modules=["pcli"],
