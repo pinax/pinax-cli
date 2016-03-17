@@ -7,4 +7,4 @@ python:
 install:
   - pip install tox
 script:
-  - tox -e py$TRAVIS_PYTHON_VERSION
+  - tox -e py${TRAVIS_PYTHON_VERSION//[.]/}
