@@ -101,7 +101,7 @@ def start(config, dev, project, name):
                 cleanup(name)
             else:
                 click.echo("There are no releases for {}. You need to specify the --dev flag to use.".format(project))
-        except KeyError as e:
+        except KeyError:
             click.echo("There are no releases for {}.".format(project))
     else:
         click.echo("The projects manifest you are trying to consume will not work: \n{}".format(config.url))
