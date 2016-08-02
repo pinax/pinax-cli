@@ -11,6 +11,7 @@ import requests
 class Config(object):
     def __init__(self):
         self.url = "https://raw.githubusercontent.com/pinax/pinax/master/projects.json"
+        self.apps_url = "https://raw.githubusercontent.com/pinax/pinax/master/distributions.json"
 
 
 pass_config = click.make_pass_decorator(Config, ensure=True)
@@ -55,11 +56,14 @@ def cleanup(name):
 
 @click.group()
 @click.option("--url", type=str, required=False, help="url to project data source")
+@click.option("--apps_url", type=str, required=False, help="url to application data source")
 @click.version_option()
 @pass_config
-def main(config, url):
+def main(config, url, apps_url):
     if url:
         config.url = url
+    if apps_url:
+        config.apps_url = apps_url
 
 
 @main.command()
@@ -81,6 +85,40 @@ def projects(config):
             click.echo("{} {}".format(release.rjust(7), project))
     else:
         click.echo("The projects manifest you are trying to consume will not work: \n{}".format(config.url))
+
+
+def show_distribution_section(config, title, section_name):
+    """
+    Obtain distribution data and display latest distribution section,
+    i.e. "demos" or "apps" or "themes".
+    """
+    payload = requests.get(config.apps_url).json()
+    distributions = sorted(payload.keys(), reverse=True)
+    latest_distribution = payload[distributions[0]]
+    click.echo("{} {}".format("Release".rjust(7), title))
+    click.echo("------- ---------------")
+    section = latest_distribution[section_name]
+    names = sorted(section.keys())
+    for name in names:
+        click.echo("{} {}".format(section[name].rjust(7), name))
+
+
+@main.command()
+@pass_config
+def apps(config):
+    show_distribution_section(config, "Application", "apps")
+
+
+@main.command()
+@pass_config
+def demos(config):
+    show_distribution_section(config, "Demo", "demos")
+
+
+@main.command()
+@pass_config
+def themes(config):
+    show_distribution_section(config, "Theme", "themes")
 
 
 @main.command()
