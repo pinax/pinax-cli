@@ -122,6 +122,12 @@ def themes(config):
 
 
 @main.command()
+@pass_config
+def tools(config):
+    show_distribution_section(config, "Tool", "tools")
+
+
+@main.command()
 @click.option("--dev", is_flag=True, help="use latest development branch instead of release")
 @click.argument("project", type=str, required=True)
 @click.argument("name", type=str, required=True)
