@@ -57,7 +57,7 @@ setup(
     py_modules=["pcli"],
     install_requires=[
         "click>=6.7",
-        "colorama>=0.3.9"
+        "colorama>=0.3.9",
         "requests>=2.18.4",
     ],
     entry_points="""
