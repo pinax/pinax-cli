@@ -2,10 +2,9 @@ import os
 import stat
 import sys
 
-from pip.commands import install
-
 import click
 import requests
+from pip.commands import install
 
 
 class Config(object):
@@ -113,12 +112,6 @@ def apps(config):
 @pass_config
 def demos(config):
     show_distribution_section(config, "Demo", "demos")
-
-
-@main.command()
-@pass_config
-def themes(config):
-    show_distribution_section(config, "Theme", "themes")
 
 
 @main.command()
