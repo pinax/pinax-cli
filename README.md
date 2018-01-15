@@ -108,12 +108,15 @@ $ pinax tools
 ### 1.1.0
 
 * Drop Python 3.3 support
-* Add "apps", "demos", and "tools" commands.
 * Standardize documentation layout
 * Move documentation into README.md
 * Convert CI and coverage to CircleCi and CodeCov
 * Add PyPi-compatible long description
 * Improve .gitignore
+
+### 1.0.0
+
+* Add "apps", "demos", "themes", and "tools" commands.
 
 
 ## Contribute

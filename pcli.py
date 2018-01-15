@@ -116,6 +116,12 @@ def demos(config):
 
 @main.command()
 @pass_config
+def themes(config):
+    show_distribution_section(config, "Theme", "themes")
+
+
+@main.command()
+@pass_config
 def tools(config):
     show_distribution_section(config, "Tool", "tools")
 
