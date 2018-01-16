@@ -24,7 +24,7 @@ def pip_install(package):
     command.run(opts, [package])
 
 
-def start_project(project, name, dev):
+def start_project(project, name, dev, location):
     from django.core.management import call_command, CommandError
     click.echo("Starting project from Pinax")
     template = project["url"] if dev else max(project["releases"])
@@ -32,8 +32,11 @@ def start_project(project, name, dev):
         template=template,
         files=project["process-files"]
     )
+    args = [name]
+    if location:
+        args.append(location)
     try:
-        call_command("startproject", name, **kwargs)
+        call_command("startproject", *args, **kwargs)
     except CommandError as e:
         click.echo(click.style("Error: ", fg="red") + str(e))
         sys.exit(1)
@@ -129,17 +132,18 @@ def tools(config):
 
 @main.command()
 @click.option("--dev", is_flag=True, help="use latest development branch instead of release")
+@click.option("--location", type=str, default="", help="specify where project is created")
 @click.argument("project", type=str, required=True)
 @click.argument("name", type=str, required=True)
 @pass_config
-def start(config, dev, project, name):
+def start(config, dev, location, project, name):
     payload = requests.get(config.url).json()
     if payload.get("version") == 1:
         projects = payload.get("projects")
         try:
             if dev or len(projects[project]["releases"]) > 0:
                 pip_install("Django")
-                start_project(projects[project], name, dev)
+                start_project(projects[project], name, dev, location)
                 click.echo("Finished")
                 output_instructions(projects[project], name)
                 cleanup(name)
