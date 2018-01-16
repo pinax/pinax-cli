@@ -2,10 +2,9 @@ import os
 import stat
 import sys
 
-from pip.commands import install
-
 import click
 import requests
+from pip.commands import install
 
 
 class Config(object):
