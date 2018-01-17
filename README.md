@@ -105,6 +105,10 @@ $ pinax tools
 
 ## Change Log
 
+### 1.1.1
+
+* Fix post-start cleanup path references
+
 ### 1.1.0
 
 * Drop Python 3.3 support

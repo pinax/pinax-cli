@@ -41,17 +41,19 @@ def start_project(project, name, dev, location):
         sys.exit(1)
 
 
-def output_instructions(project, name):
+def output_instructions(project):
     if "instructions" in project:
         click.echo(project["instructions"])
 
 
-def cleanup(name):
-    # @@@ Should this be indicated in the project dict instead of hard coded?
-    os.remove(os.path.join(name, "LICENSE"))
-    os.remove(os.path.join(name, "CONTRIBUTING.md"))
-    os.remove(os.path.join(name, "update.sh"))
-    managepy = os.path.join(name, "manage.py")
+def cleanup(name, location):
+    if not location:
+        # if location was not specified, start_project used `name` for new subdir
+        location = name
+    os.remove(os.path.join(location, "LICENSE"))
+    os.remove(os.path.join(location, "CONTRIBUTING.md"))
+    os.remove(os.path.join(location, "update.sh"))
+    managepy = os.path.join(location, "manage.py")
     st = os.stat(managepy)
     os.chmod(managepy, st.st_mode | stat.S_IEXEC)
 
@@ -144,8 +146,8 @@ def start(config, dev, location, project, name):
                 pip_install("Django")
                 start_project(projects[project], name, dev, location)
                 click.echo("Finished")
-                output_instructions(projects[project], name)
-                cleanup(name)
+                output_instructions(projects[project])
+                cleanup(name, location)
             else:
                 click.echo("There are no releases for {}. You need to specify the --dev flag to use.".format(project))
         except KeyError:
