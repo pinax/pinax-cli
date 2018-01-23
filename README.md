@@ -18,13 +18,11 @@
 
 * [About Pinax](#about-pinax)
 * [Overview](#overview)
-  * [Features](#features)
   * [Supported Django and Python versions](#supported-django-and-python-versions)
 * [Documentation](#documentation)
   * [Installation](#installation)
   * [Usage](#usage)
 * [Change Log](#change-log)
-* [History](#history)
 * [Contribute](#contribute)
 * [Code of Conduct](#code-of-conduct)
 * [Connect with Pinax](#connect-with-pinax)
