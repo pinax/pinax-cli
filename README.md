@@ -13,6 +13,7 @@
 [![](http://slack.pinaxproject.com/badge.svg)](http://slack.pinaxproject.com/)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+
 ## Table of Contents
 
 * [About Pinax](#about-pinax)
@@ -51,7 +52,6 @@ and learning more about the latest Pinax app releases.
 To install pinax-cli:
 
     pip install pinax-cli
-
 
 ### Usage
 
