@@ -51,7 +51,9 @@ and learning more about the latest Pinax app releases.
 
 To install pinax-cli:
 
-    pip install pinax-cli
+```shell
+$ pip install pinax-cli
+```
 
 ### Usage
 
@@ -61,7 +63,7 @@ Invoke pinax-cli with `$ pinax <cmd>` using one of the following commands:
 
 Show a list of Pinax apps with their release version in the latest Pinax distribution.
 
-```commandline
+```shell
 $ pinax apps
 ```
 
@@ -69,7 +71,7 @@ $ pinax apps
 
 Show a list of Pinax demonstration projects with their release version in the latest Pinax distribution.
 
-```commandline
+```shell
 $ pinax demos
 ```
 
@@ -77,7 +79,7 @@ $ pinax demos
 
 Show a list of Pinax starter projects and their release version in the latest Pinax distribution.
 
-```commandline
+```shell
 $ pinax projects
 Release Project
 ------- ---------------
@@ -98,7 +100,7 @@ Release Project
 
 Show a list of Pinax tools with their release version in the latest Pinax distribution.
 
-```commandline
+```shell
 $ pinax tools
 ```
 
