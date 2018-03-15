@@ -127,6 +127,7 @@ the project is created in a sub-directory named `my_project`.
 
 * Add `pip` requirement to setup.py
 * Use Django v1.11 for project creation if installed Python == 2.7
+* Add usage examples, color, and sub-command short description to help
 
 ### 1.1.1
 
