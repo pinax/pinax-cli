@@ -1,3 +1,5 @@
+import os
+import sys
 from setuptools import setup
 
 VERSION = "1.1.2"
@@ -49,6 +51,13 @@ Supported Django and Python Versions
 |  2.0            |     |  *  |  *  |  *  |
 +-----------------+-----+-----+-----+-----+
 """
+
+
+# Publish Helper.
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist bdist_wheel upload')
+    sys.exit()
+
 
 setup(
     author="Pinax Team",
