@@ -1,6 +1,6 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
-VERSION = "1.1.1"
+VERSION = "1.1.2"
 LONG_DESCRIPTION = """
 .. image:: http://pinaxproject.com/pinax-design/patches/pinax-blank.svg
     :target: https://pypi.python.org/pypi/pinax-cli/
@@ -38,11 +38,16 @@ Pinax Command Line Interface
 and learning more about available Pinax apps.
 
 
-Supported Python Versions
--------------------------
+Supported Django and Python Versions
+------------------------------------
 
-``pinax-cli`` supports Python 2.7, 3.4, 3.5, and 3.6
-
++-----------------+-----+-----+-----+-----+
+| Django / Python | 2.7 | 3.4 | 3.5 | 3.6 |
++=================+=====+=====+=====+=====+
+|  1.11           |  *  |  *  |  *  |  *  |
++-----------------+-----+-----+-----+-----+
+|  2.0            |     |  *  |  *  |  *  |
++-----------------+-----+-----+-----+-----+
 """
 
 setup(
@@ -53,17 +58,20 @@ setup(
     long_description=LONG_DESCRIPTION,
     version=VERSION,
     url="http://github.com/pinax/pinax-cli/",
+    packages=["pinaxcli"],
     license="MIT",
-    py_modules=["pcli"],
     install_requires=[
         "click>=6.7",
-        "colorama>=0.3.9",
+        "crayons>=0.1.2",
+        'django==1.11; python_version == "2.7"',
+        'django>=2.0; python_version >= "3"',
         "requests>=2.18.4",
     ],
-    entry_points="""
-        [console_scripts]
-        pinax=pcli:main
-    """,
+    entry_points={
+        "console_scripts": [
+            "pinax = pinaxcli.cli:main",
+        ],
+    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",

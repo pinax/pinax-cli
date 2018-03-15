@@ -42,6 +42,13 @@ Django apps, themes, and starter project templates. This collection can be found
 `pinax-cli` is a command-line interface for installing Pinax starter projects
 and learning more about the latest Pinax app releases.
 
+#### Supported Django and Python versions
+
+Django \ Python | 2.7 | 3.4 | 3.5 | 3.6
+--------------- | --- | --- | --- | ---
+1.11 |  *  |  *  |  *  |  *  
+2.0  |     |  *  |  *  |  *
+
 
 ## Documentation
 
@@ -102,8 +109,24 @@ Show a list of Pinax tools with their release version in the latest Pinax distri
 $ pinax tools
 ```
 
+#### `pinax start <starter_project> <my_project> [--dev] [--location <path>]`
+
+Create a new project based on a specific Pinax starter project.
+
+`<starter_project>` must be one of the project names shown by `pinax projects`.
+
+The `--dev` flag tells pinax-cli to install the latest starter project code from the repository rather than the most recent release.
+Use this option if you want the latest version of a starter project.
+
+The `--location <path>` flag tells pinax-cli where to create the new project. By default
+the project is created in a sub-directory named `my_project`. 
 
 ## Change Log
+
+### 1.1.1
+
+* Add `pip` requirement to setup.py
+* Use Django v1.11 for project creation if installed Python == 2.7
 
 ### 1.1.1
 
