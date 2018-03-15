@@ -123,7 +123,7 @@ the project is created in a sub-directory named `my_project`.
 
 ## Change Log
 
-### 1.1.1
+### 1.1.2
 
 * Use Django v1.11 for project creation if installed Python == 2.7
 * Add usage examples, color, and sub-command short description to help
