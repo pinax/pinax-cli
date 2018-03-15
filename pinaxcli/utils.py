@@ -5,6 +5,7 @@ def order_manually(sub_commands):
     """Order sub-commands for display"""
     order = [
         "start",
+        "projects",
     ]
     ordered = []
     commands = dict(zip([cmd for cmd in sub_commands], sub_commands))
