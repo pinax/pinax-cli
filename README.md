@@ -44,10 +44,7 @@ and learning more about the latest Pinax app releases.
 
 #### Supported Django and Python versions
 
-Django \ Python | 2.7 | 3.4 | 3.5 | 3.6
---------------- | --- | --- | --- | ---
-1.11 |  *  |  *  |  *  |  *  
-2.0  |     |  *  |  *  |  *
+pinax-cli creates projects using Python v3.4+ and Django v2.0+
 
 
 ## Documentation
@@ -116,12 +113,16 @@ Create a new project based on a specific Pinax starter project.
 `<starter_project>` must be one of the project names shown by `pinax projects`.
 
 The `--dev` flag tells pinax-cli to install the latest starter project code from the repository rather than the most recent release.
-Use this option if you want the latest version of a starter project.
+Use this option if you require the latest version of a starter project.
 
 The `--location <path>` flag tells pinax-cli where to create the new project. By default
 the project is created in a sub-directory named `my_project`. 
 
 ## Change Log
+
+### 1.1.3
+
+* Drop support for Python 2.7 and Django < 2.0; require Python 3.4+ and Django 2.0+
 
 ### 1.1.2
 
