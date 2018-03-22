@@ -44,7 +44,10 @@ and learning more about the latest Pinax app releases.
 
 #### Supported Django and Python versions
 
-pinax-cli creates projects using Python v3.4+ and Django v2.0+
+Django \ Python | 2.7 | 3.4 | 3.5 | 3.6
+--------------- | --- | --- | --- | ---
+1.11 |  *  |  *  |  *  |  *  
+2.0  |     |  *  |  *  |  *
 
 
 ## Documentation
@@ -119,6 +122,10 @@ The `--location <path>` flag tells pinax-cli where to create the new project. By
 the project is created in a sub-directory named `my_project`. 
 
 ## Change Log
+
+### 1.1.4
+
+* Restore support for Django 1.11 with Python 2.7
 
 ### 1.1.3
 

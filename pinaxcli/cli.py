@@ -2,9 +2,10 @@ import os
 import stat
 import sys
 
-import click
 import django
 from django.core.management import call_command, CommandError
+
+import click
 import requests
 
 from .utils import format_help, order_manually
@@ -164,7 +165,7 @@ def validate_django_compatible_with_python():
     """
     python_version = sys.version[:5]
     django_version = django.get_version()
-    if sys.version_info == (2, 7) and django_version >= "1.12":
+    if sys.version_info == (2, 7) and django_version >= "2":
         click.BadArgumentUsage("Please install Django v1.11 for Python {}, or switch to Python >= v3.4".format(python_version))
 
 
