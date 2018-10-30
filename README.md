@@ -88,17 +88,17 @@ Show a list of Pinax starter projects and their release version in the latest Pi
 $ pinax projects
 Release Project
 ------- ---------------
-  4.0.0 account
-  4.0.0 blog
-  2.0.0 company
+  4.0.4 account
+  4.0.4 blog
+  2.0.4 company
         documents
         social-auth
-  4.0.0 static
-  4.0.0 stripe
+  4.0.4 static
+  4.0.4 stripe
         team-wiki
-  3.0.0 waitinglist
+  3.0.4 waitinglist
         wiki
-  4.0.0 zero
+  4.0.4 zero
 ```
 
 #### `pinax tools`
