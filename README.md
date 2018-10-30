@@ -121,6 +121,7 @@ Use this option if you require the latest version of a starter project.
 The `--location <path>` flag tells pinax-cli where to create the new project. By default
 the project is created in a sub-directory named `my_project`. 
 
+
 ## Change Log
 
 ### 1.1.4
