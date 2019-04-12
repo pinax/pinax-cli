@@ -1,5 +1,3 @@
-![](http://pinaxproject.com/pinax-design/patches/pinax-cli.svg)
-
 # Pinax Command Line Interface
 
 [![](https://img.shields.io/pypi/v/pinax-cli.svg)](https://pypi.python.org/pypi/pinax-cli/)
